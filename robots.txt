@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dame-hub.github.io/AVOTRANSPORTATION/sitemap.xml
+Sitemap: https://avotransportation.com/sitemap.xml
