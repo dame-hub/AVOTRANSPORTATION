@@ -551,15 +551,8 @@ const AVO_EMAIL = "avotransportationllc@gmail.com";
 
 (function(){
   var m=document.getElementById('avoModal');
-  window.avoOpen=function(svc){
-    if(!m) return;
-    m.classList.add('open');
-    // reset any leftover success state
-    var f=m.querySelector('.avo-form'), s=m.querySelector('.avo-form-success');
-    if(f) f.style.display=''; if(s) s.style.display='none';
-    var sel=document.getElementById('m_service');
-    if(svc&&sel){ sel.value=svc; }
-  };
+  /* Quote CTAs now route to the embedded Google Form on the contact page */
+  window.avoOpen=function(){ window.location.href='contact.html#quote'; };
   window.avoClose=function(){ if(m){m.classList.remove('open');} };
   if(m){m.addEventListener('click',function(e){if(e.target===m)avoClose();});}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')avoClose();});
