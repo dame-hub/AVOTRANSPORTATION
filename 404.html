@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Page Not Found | AVO Transportation</title>
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    font-family:'Inter',sans-serif;color:#ededed;
+    background:radial-gradient(900px 500px at 70% -10%,rgba(255,107,53,.18),transparent 60%),
+               linear-gradient(180deg,#000 0%,#161616 100%);
+    display:flex;align-items:center;justify-content:center;padding:40px 20px;text-align:center;
+    overflow:hidden;position:relative;
+  }
+  body::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,transparent,transparent 58px,rgba(255,255,255,.022) 58px,rgba(255,255,255,.022) 59px);
+  }
+  .wrap{position:relative;z-index:1;max-width:560px;}
+  .logo{font-family:'Space Mono',monospace;font-size:1.6rem;font-weight:700;letter-spacing:.12em;color:#fff;margin-bottom:48px;}
+  .logo span{color:#ff6b35;}
+  .code{font-family:'Space Mono',monospace;font-size:clamp(4rem,12vw,7rem);font-weight:700;color:#ff6b35;line-height:1;margin-bottom:12px;letter-spacing:-.04em;}
+  h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:-.02em;}
+  p{color:#b6b6b6;font-size:1.02rem;line-height:1.65;margin-bottom:32px;}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  a.btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 28px;border-radius:6px;text-decoration:none;
+    font-weight:600;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;
+    border:2px solid transparent;transition:transform .25s ease,background .25s ease,box-shadow .25s ease;
+  }
+  a.primary{background:#ff6b35;color:#fff;}
+  a.primary:hover{background:#ff5520;transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,107,53,.34);}
+  a.ghost{border-color:#ff6b35;color:#fff;}
+  a.ghost:hover{background:rgba(255,107,53,.12);transform:translateY(-2px);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="assets/avo-symbol.png" alt="AVO Transportation" style="width:120px;height:auto;margin:0 auto 26px;display:block;">
+    <div class="code">404</div>
+    <h1>This page took a trip to the landfill.</h1>
+    <p>We couldn't find what you were looking for &mdash; but we can probably haul it away. Head back home or get a free quote.</p>
+    <div class="btns">
+      <a href="index.html" class="btn primary">&larr; Back to Home</a>
+      <a href="contact.html" class="btn ghost">Get a Free Quote</a>
+    </div>
+  </div>
+</body>
+</html>

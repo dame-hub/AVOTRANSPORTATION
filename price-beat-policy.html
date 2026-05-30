@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Price-Beat Guarantee — AVO Transportation</title>
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --orange:#ff6b35;
+    --orange-dark:#e85a25;
+    --ink:#1a1a1a;
+    --muted:#666;
+    --rule:#e0e0e0;
+    --soft:#fff7f2;
+  }
+  @page{ size:letter; margin:0.55in; }
+  html,body{ background:#f4f4f4; }
+  body{
+    font-family:'Inter',-apple-system,Segoe UI,sans-serif;
+    color:var(--ink);
+    line-height:1.5;
+    padding:32px 16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    width:8.5in; min-height:11in;
+    background:#fff; margin:0 auto;
+    padding:0.55in 0.6in;
+    box-shadow:0 8px 30px rgba(0,0,0,0.12);
+    position:relative;
+  }
+  /* ===== header ===== */
+  .masthead{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding-bottom:14px; border-bottom:4px solid var(--orange);
+    margin-bottom:22px;
+  }
+  .brand{ font-family:'Space Mono',monospace; font-size:24pt; font-weight:700; letter-spacing:0.08em; color:var(--ink); }
+  .brand span{ color:var(--orange); }
+  .doctype{ font-family:'Space Mono',monospace; font-size:9pt; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+  h1{
+    font-size:30pt; line-height:1.05; letter-spacing:-0.02em; font-weight:700;
+    margin-bottom:6px;
+  }
+  h1 .hl{ color:var(--orange); }
+  .tagline{ font-size:11pt; color:var(--muted); margin-bottom:22px; max-width:6in; }
+  /* ===== promise box ===== */
+  .promise{
+    background:var(--soft);
+    border:1.5px solid var(--orange);
+    border-radius:6px;
+    padding:14px 18px;
+    margin-bottom:20px;
+  }
+  .promise .label{
+    font-family:'Space Mono',monospace; font-size:8.5pt; letter-spacing:0.22em;
+    text-transform:uppercase; color:var(--orange-dark); font-weight:700; margin-bottom:6px;
+  }
+  .promise .text{ font-size:12pt; font-weight:600; line-height:1.45; color:var(--ink); }
+  /* ===== section ===== */
+  section{ margin-bottom:18px; page-break-inside:avoid; break-inside:avoid; }
+  h2{
+    font-family:'Space Mono',monospace;
+    font-size:10pt; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--orange); font-weight:700;
+    margin-bottom:9px; padding-bottom:5px; border-bottom:1px solid var(--rule);
+  }
+  /* numbered how-it-works */
+  .steps{ counter-reset:s; }
+  .steps li{
+    list-style:none; position:relative;
+    padding:5px 0 5px 30px;
+    font-size:10.5pt; line-height:1.55;
+    counter-increment:s;
+  }
+  .steps li::before{
+    content:counter(s);
+    position:absolute; left:0; top:5px;
+    width:20px; height:20px;
+    background:var(--ink); color:#fff;
+    border-radius:50%;
+    font-family:'Space Mono',monospace; font-size:9pt; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  /* checkbullets / cross */
+  ul.check li, ul.cross li{
+    list-style:none; position:relative;
+    padding:4px 0 4px 24px;
+    font-size:10pt; line-height:1.5; color:var(--ink);
+  }
+  ul.check li::before{
+    content:"✓"; position:absolute; left:0; top:4px;
+    color:var(--orange); font-weight:700; font-size:11pt;
+  }
+  ul.cross li::before{
+    content:"✕"; position:absolute; left:0; top:4px;
+    color:#a33; font-weight:700; font-size:10pt;
+  }
+  /* example block */
+  .example{
+    background:#fafafa; border-left:3px solid var(--orange);
+    padding:11px 14px; font-size:9.5pt; line-height:1.6;
+    border-radius:0 4px 4px 0;
+  }
+  .example strong{ color:var(--ink); }
+  .example em{ font-style:normal; color:var(--orange-dark); font-weight:600; }
+  /* two-column for what qualifies / excluded */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  /* ===== footer ===== */
+  .foot{
+    margin-top:22px; padding-top:14px;
+    border-top:1px solid var(--rule);
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
+    font-size:8.5pt; color:var(--muted); line-height:1.5;
+  }
+  .foot .contact strong{ color:var(--ink); font-size:9.5pt; display:block; margin-bottom:2px; }
+  .foot .eff{ text-align:right; font-family:'Space Mono',monospace; letter-spacing:0.04em; }
+  /* print rules */
+  @media print {
+    html,body{ background:#fff; padding:0; }
+    .sheet{ box-shadow:none; margin:0; padding:0; width:auto; min-height:auto; }
+    a{ color:inherit; text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/avo-symbol.png" alt="" style="height:42px;width:auto;">
+      <div class="brand">AVO<span>.</span></div>
+    </div>
+    <div class="doctype">Price-Beat Policy &middot; v1.0</div>
+  </div>
+
+  <h1>We'll Beat Any <span class="hl">Written Quote</span>.</h1>
+  <p class="tagline">Hand this card to any customer comparing prices &mdash; or any crew member asked, "Can you really beat that?" Yes, here's how.</p>
+
+  <div class="promise">
+    <div class="label">The Promise</div>
+    <div class="text">AVO will beat any qualifying written competitor quote by 5%, down to our $89 minimum service charge.</div>
+  </div>
+
+  <section>
+    <h2>How It Works</h2>
+    <ol class="steps">
+      <li>Customer gets a written estimate from another licensed Denver-metro service company.</li>
+      <li>Customer sends the estimate to AVO (email, photo, attached to the website quote form) <strong>before</strong> booking.</li>
+      <li>AVO matches the scope of work, beats their price by 5%, and confirms the new price in writing.</li>
+      <li>Customer approves &mdash; AVO gets to work.</li>
+    </ol>
+  </section>
+
+  <div class="grid2">
+    <section>
+      <h2>What Qualifies</h2>
+      <ul class="check">
+        <li>Written estimate (paper, PDF, email, screenshot) from a <strong>licensed and insured</strong> Denver-metro competitor</li>
+        <li>For a <strong>comparable scope of work</strong> &mdash; same service, same volume or area, same items</li>
+        <li>Dated within the last <strong>30 days</strong></li>
+        <li>Presented to AVO <strong>before booking</strong></li>
+        <li>For services in AVO's standard area: Denver, Aurora, Boulder, &amp; the Front Range</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What's Excluded</h2>
+      <ul class="cross">
+        <li>Verbal quotes or "starting at" placeholder pricing</li>
+        <li>Aggregator auto-quotes (Thumbtack, Yelp instant quotes)</li>
+        <li>Quotes from unlicensed or uninsured providers</li>
+        <li>Promotional, coupon, or one-time pricing not generally available</li>
+        <li>Jobs AVO cannot accept liability for (hazardous materials, etc.)</li>
+        <li>Final price cannot go below AVO's <strong>$89 minimum</strong> service charge</li>
+      </ul>
+    </section>
+  </div>
+
+  <section>
+    <h2>Worked Example</h2>
+    <div class="example">
+      <strong>Customer shows:</strong> a $400 written quote from a national chain for a half-trailer load.<br>
+      <strong>AVO published rate</strong> for a half-trailer load: <em>from $299</em>.<br>
+      <strong>Price-beat math:</strong> $400 minus 5% &equals; <em>$380</em>.<br>
+      Customer pays the lower of the two &mdash; in this case AVO's published $299 already wins, so the price-beat doesn't even need to kick in. (If the competitor quote had been below $299, AVO would beat it by 5% down to the $89 floor.)
+    </div>
+  </section>
+
+  <section>
+    <h2>For Crew On The Job</h2>
+    <ul class="check">
+      <li>If a customer asks about price-matching, give them this card.</li>
+      <li>If they hand you a competitor quote on-site, photograph it and text it to dispatch <strong>before</strong> agreeing to a price. The 5% beat is calculated then; do not promise a number on the spot.</li>
+      <li>Add-on surcharges (heavy materials, excessive stairs, specialty disposal) are quoted separately and are <strong>not</strong> part of the price-beat calculation.</li>
+    </ul>
+  </section>
+
+  <div class="foot">
+    <div class="contact">
+      <strong>AVO Transportation LLC</strong>
+      Aurora, Colorado &middot; Licensed &amp; Insured<br>
+      avotransportationllc@gmail.com &middot; avotransportation.com
+    </div>
+    <div class="eff">EFFECTIVE 2025<br>SUPERSEDES ALL PRIOR</div>
+  </div>
+
+</div>
+</body>
+</html>

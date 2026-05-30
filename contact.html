@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact AVO Transportation | Free Quotes | Denver, Aurora & Boulder</title>
+<meta name="description" content="Contact AVO Transportation for a free quote on junk removal, pressure washing, detailing or cleanouts in Denver, Aurora, Boulder and the Front Range.">
+<!--
+============================================================================
+  AVO TRANSPORTATION LLC  —  CONTACT PAGE
+  Static HTML, GitHub Pages-ready. No build step, no framework.
+
+  DEPLOY (one time)
+  -----------------
+   1.  Create a GitHub repo (e.g. "avo-website") and push every file
+       in this folder to the repo root.
+   2.  On GitHub:  Settings  →  Pages  →  Source = main, folder = / (root).
+       Pages will publish at  https://<username>.github.io/<repo>/
+       (For a user/org site, name the repo  <username>.github.io  and
+        it publishes at  https://<username>.github.io/  instead.)
+   3.  (Optional) Custom domain:  add a file named  CNAME  containing your
+       domain (e.g.  www.avotransportation.com ), then point an A/ALIAS
+       record at GitHub Pages per their docs.
+
+  BEFORE LAUNCH — required edits
+  ------------------------------
+   *  Set up your Google Sheets lead tracker (see google-apps-script.gs
+      and README.md). Then replace the endpoint placeholder in this file:
+         const AVO_FORM_ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+   *  Confirm the email address  avotransportationllc@gmail.com.
+============================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<style>
+/* ============ AVO design system — scoped under .avo ============ */
+.avo, .avo *, .avo *::before, .avo *::after { box-sizing: border-box; }
+.avo {
+  --pd:#000000; --pdk:#0a0a0a; --sd:#141414; --td:#1d1d1d; --el:#242424;
+  --accent:#ff6b35; --accent-light:#ff8a52; --accent-dark:#ff5520;
+  --tp:#ededed; --ts:#b6b6b6; --tl:#7d7d7d;
+  --bd:#2a2a2a; --bd-soft:#202020; --success:#1f7a4d;
+  --maxw:1180px;
+  margin:0; padding:0;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.65; color:var(--tp);
+  background:var(--pd);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+.avo h1,.avo h2,.avo h3,.avo h4,.avo h5{margin:0;line-height:1.15;color:#fff;font-weight:700;letter-spacing:-.02em;}
+.avo p{margin:0;}
+.avo a{color:inherit;text-decoration:none;}
+.avo img{max-width:100%;display:block;}
+.avo ul{margin:0;padding:0;list-style:none;}
+
+.avo .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+.avo .section{padding:clamp(64px,9vw,110px) 0;position:relative;}
+.avo .bg-pd{background:var(--pd);}
+.avo .bg-sd{background:var(--sd);}
+.avo .bg-grad{background:linear-gradient(180deg,var(--pd) 0%,var(--sd) 100%);}
+
+/* eyebrow */
+.avo .eyebrow{
+  font-family:'Space Mono',monospace;font-size:.74rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.avo .eyebrow::before{content:"";width:32px;height:2px;background:var(--accent);display:inline-block;}
+.avo .eyebrow.center{justify-content:center;}
+
+.avo .h-section{font-size:clamp(1.9rem,4.2vw,2.9rem);margin-bottom:18px;}
+.avo .lead{color:var(--ts);font-size:1.06rem;font-weight:300;max-width:620px;}
+.avo .center{text-align:center;}
+.avo .center .lead{margin-left:auto;margin-right:auto;}
+.avo .head-block{margin-bottom:54px;}
+
+/* ---- buttons ---- */
+.avo .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:600;font-size:.92rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:15px 32px;border-radius:6px;border:2px solid transparent;cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;
+  font-family:'Inter',sans-serif;line-height:1;
+}
+.avo .btn-primary{background:var(--accent);color:#fff;}
+.avo .btn-primary:hover{background:var(--accent-dark);transform:translateY(-3px);box-shadow:0 14px 32px rgba(255,107,53,.34);}
+.avo .btn-ghost{background:transparent;color:#fff;border-color:var(--accent);}
+.avo .btn-ghost:hover{background:rgba(255,107,53,.12);transform:translateY(-3px);}
+.avo .btn-block{width:100%;}
+
+/* ---- NAV (sticky; delete for Option B) ---- */
+.avo-nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px clamp(20px,4vw,40px);
+  background:rgba(0,0,0,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bd);
+}
+.avo-nav .logo{font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;letter-spacing:.12em;color:#fff;}
+.avo-nav .logo span{color:var(--accent);}
+.avo-nav .avo-brand{display:flex;align-items:center;gap:11px;}
+.avo-nav .avo-mark{height:38px;width:auto;display:block;}
+.avo-nav .avo-word{font-family:'Space Mono',monospace;font-size:1.32rem;font-weight:700;letter-spacing:.14em;color:#fff;line-height:1;}
+.avo-nav .avo-word i{color:var(--accent);font-style:normal;}
+.avo-foot .avo-foot-logo{height:84px;width:auto;margin-bottom:16px;display:block;}
+.avo-hero .hero-mark{position:absolute;right:3%;top:50%;transform:translateY(-50%);width:min(360px,30vw);opacity:.07;pointer-events:none;z-index:1;filter:saturate(1.1);}
+@media(max-width:760px){.avo-hero .hero-mark{display:none;}}
+.avo-nav .links{display:flex;align-items:center;gap:30px;}
+.avo-nav .links a{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ts);transition:color .25s;}
+.avo-nav .links a:hover,.avo-nav .links a.active{color:var(--accent);}
+.avo-nav .nav-cta{
+  background:var(--accent);color:#fff;padding:11px 22px;border-radius:6px;
+  font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;transition:.25s;
+}
+.avo-nav .nav-cta:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,53,.3);}
+.avo-nav .burger{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+@media(max-width:860px){
+  .avo-nav .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:#0c0c0c;border-bottom:1px solid var(--bd);padding:8px 0;}
+  .avo-nav .links.open{display:flex;}
+  .avo-nav .links a{padding:14px 26px;width:100%;}
+  .avo-nav .links .nav-cta{margin:10px 26px;text-align:center;}
+  .avo-nav .burger{display:block;}
+}
+
+/* ---- HERO ---- */
+.avo-hero{
+  position:relative;overflow:hidden;
+  padding:clamp(80px,12vw,140px) 0 clamp(70px,10vw,120px);
+  background:radial-gradient(900px 500px at 70% -10%,rgba(255,107,53,.16),transparent 60%),
+             linear-gradient(180deg,#000 0%,#161616 100%);
+  border-bottom:1px solid var(--bd);
+}
+.avo-hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 58px,rgba(255,255,255,.022) 58px,rgba(255,255,255,.022) 59px);
+}
+.avo-hero .wrap{position:relative;z-index:2;}
+.avo-hero h1{font-size:clamp(2.3rem,6vw,4rem);letter-spacing:-.03em;margin-bottom:22px;}
+.avo-hero h1 .hl{color:var(--accent);}
+.avo-hero .lead{font-size:clamp(1.02rem,2.2vw,1.22rem);margin-bottom:34px;}
+.avo-hero .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.avo-hero.center .hero-btns{justify-content:center;}
+
+/* page hero (smaller, for interior pages) */
+.avo-phero{padding:clamp(70px,9vw,120px) 0 clamp(40px,6vw,64px);}
+.avo-phero h1{font-size:clamp(2rem,5vw,3.2rem);}
+
+/* ---- trust badges row ---- */
+.avo .badges{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:36px;}
+.avo.center .badges,.avo .badges.center{justify-content:center;}
+.avo .badge{display:inline-flex;align-items:center;gap:10px;color:var(--ts);font-size:.9rem;font-weight:500;}
+.avo .badge i{color:var(--accent);font-size:1rem;}
+
+/* ---- stats strip ---- */
+.avo .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border-block:1px solid var(--bd);}
+.avo .stat{background:var(--pd);padding:34px 20px;text-align:center;}
+.avo .stat .n{font-family:'Space Mono',monospace;font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700;color:var(--accent);letter-spacing:-.02em;}
+.avo .stat .l{font-size:.82rem;color:var(--ts);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;}
+@media(max-width:680px){.avo .stats{grid-template-columns:repeat(2,1fr);}}
+
+/* ---- generic grid ---- */
+.avo .grid{display:grid;gap:26px;}
+.avo .g-3{grid-template-columns:repeat(3,1fr);}
+.avo .g-4{grid-template-columns:repeat(4,1fr);}
+.avo .g-2{grid-template-columns:repeat(2,1fr);}
+@media(max-width:980px){.avo .g-4{grid-template-columns:repeat(2,1fr);}.avo .g-3{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.avo .g-4,.avo .g-3,.avo .g-2{grid-template-columns:1fr;}}
+
+/* ---- cards ---- */
+.avo .card{
+  background:linear-gradient(180deg,var(--td) 0%,var(--sd) 100%);
+  border:1px solid var(--bd);border-radius:12px;padding:32px 28px;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;position:relative;overflow:hidden;
+}
+.avo .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;}
+.avo .card:hover{transform:translateY(-6px);border-color:#3a3a3a;box-shadow:0 22px 48px rgba(0,0,0,.45);}
+.avo .card:hover::before{transform:scaleX(1);}
+.avo .card .ic{font-size:1.9rem;color:var(--accent);margin-bottom:16px;}
+.avo .card h3{font-size:1.18rem;margin-bottom:10px;}
+.avo .card h4{font-size:1.05rem;margin-bottom:8px;color:#fff;}
+.avo .card p{color:var(--ts);font-size:.95rem;}
+.avo .card .mini-list{margin-top:16px;}
+.avo .card .mini-list li{position:relative;padding:7px 0 7px 24px;color:var(--ts);font-size:.9rem;}
+.avo .card .mini-list li::before{content:"\2192";position:absolute;left:0;color:var(--accent);font-weight:700;}
+.avo .card .link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--accent);font-weight:600;font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;}
+.avo .card .link i{transition:transform .25s;}
+.avo .card:hover .link i{transform:translateX(4px);}
+
+/* ---- service category cards (services page) ---- */
+.avo .cat{background:var(--sd);border:1px solid var(--bd);border-radius:14px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.avo .cat:hover{transform:translateY(-6px);box-shadow:0 24px 54px rgba(0,0,0,.5);}
+.avo .cat .cat-head{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-light) 100%);padding:26px 28px;color:#fff;}
+.avo .cat .cat-head h3{font-size:1.32rem;display:flex;align-items:center;gap:12px;color:#fff;}
+.avo .cat .cat-head p{font-size:.92rem;opacity:.95;margin-top:4px;font-weight:300;}
+.avo .cat .cat-body{padding:28px;}
+.avo .cat .svc{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--bd-soft);}
+.avo .cat .svc:last-of-type{border-bottom:none;}
+.avo .cat .svc h4{color:#fff;font-size:1.04rem;margin-bottom:6px;}
+.avo .cat .svc p{color:var(--ts);font-size:.93rem;}
+.avo .cat .price{display:inline-block;margin-top:10px;font-family:'Space Mono',monospace;font-weight:700;color:var(--accent);font-size:.92rem;}
+.avo .cat .vs{display:block;color:var(--tl);font-size:.82rem;margin-top:3px;font-family:'Inter';font-weight:400;}
+
+/* ---- price-beat banner ---- */
+.avo .pricebeat{
+  background:linear-gradient(135deg,#1a1208 0%,#241400 100%);
+  border:1px solid var(--accent);border-radius:14px;padding:34px 38px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.avo .pricebeat h3{color:var(--accent);font-size:1.3rem;margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+.avo .pricebeat p{color:var(--ts);font-size:.96rem;max-width:640px;}
+.avo .pricebeat .seal{
+  background:var(--accent);color:#fff;padding:14px 26px;border-radius:8px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;font-size:.86rem;white-space:nowrap;text-align:center;
+}
+
+/* ---- comparison table ---- */
+.avo .table-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:12px;}
+.avo table.cmp{width:100%;border-collapse:collapse;min-width:640px;}
+.avo table.cmp th{background:var(--el);color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;text-align:left;padding:16px 20px;font-weight:700;}
+.avo table.cmp td{padding:16px 20px;border-top:1px solid var(--bd-soft);color:var(--ts);font-size:.92rem;}
+.avo table.cmp tr:hover td{background:rgba(255,107,53,.05);}
+.avo table.cmp .avo-col{color:var(--accent);font-weight:700;font-family:'Space Mono',monospace;}
+.avo table.cmp .save{color:var(--success);font-weight:600;}
+.avo table.cmp .who{display:block;color:var(--tl);font-size:.77rem;margin-top:4px;font-weight:400;}
+.avo .src-note{color:var(--tl);font-size:.78rem;margin-top:14px;line-height:1.6;}
+.avo .terms{color:var(--tl);font-size:.78rem;line-height:1.6;margin-top:14px;max-width:680px;}
+.avo .pricebeat .terms{margin-top:10px;}
+
+/* ---- pricing tier cards ---- */
+.avo .tier{background:linear-gradient(180deg,var(--td),var(--sd));border:1px solid var(--bd);border-radius:12px;padding:28px 24px;text-align:center;transition:.3s;position:relative;}
+.avo .tier:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 20px 44px rgba(0,0,0,.45);}
+.avo .tier.feat{border-color:var(--accent);}
+.avo .tier .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+.avo .tier h4{font-size:1.02rem;margin-bottom:6px;}
+.avo .tier .amt{font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:var(--accent);margin:8px 0 4px;}
+.avo .tier .amt small{font-size:.8rem;color:var(--tl);font-weight:400;}
+.avo .tier .desc{color:var(--ts);font-size:.86rem;min-height:38px;}
+.avo .tier .cvs{color:var(--tl);font-size:.78rem;margin-top:8px;}
+
+/* ---- feature highlight (We Buy Items) ---- */
+.avo .feature{
+  background:linear-gradient(135deg,var(--el) 0%,rgba(45,35,28,.55) 100%);
+  border-left:5px solid var(--accent);border-radius:14px;padding:clamp(36px,5vw,56px);
+  box-shadow:0 16px 44px rgba(0,0,0,.35);
+}
+.avo .feature h3{color:var(--accent);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.avo .feature p{color:var(--tp);font-size:1.04rem;line-height:1.8;margin-bottom:22px;}
+.avo .feature .flist{columns:2;column-gap:40px;}
+.avo .feature .flist li{position:relative;padding:10px 0 10px 32px;color:var(--ts);break-inside:avoid;}
+.avo .feature .flist li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:1.1rem;}
+@media(max-width:640px){.avo .feature .flist{columns:1;}}
+
+/* ---- area chips ---- */
+.avo .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+.avo .chip{background:var(--td);border:1px solid var(--bd);border-radius:30px;padding:9px 18px;font-size:.86rem;color:var(--ts);transition:.25s;}
+.avo .chip:hover{border-color:var(--accent);color:#fff;}
+.avo .chip i{color:var(--accent);margin-right:7px;font-size:.8rem;}
+
+/* ---- FAQ ---- */
+.avo .faq{border-top:1px solid var(--bd);}
+.avo .faq details{border-bottom:1px solid var(--bd);}
+.avo .faq summary{list-style:none;cursor:pointer;padding:22px 4px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-weight:600;color:#fff;font-size:1.02rem;}
+.avo .faq summary::-webkit-details-marker{display:none;}
+.avo .faq summary::after{content:"+";color:var(--accent);font-size:1.5rem;font-weight:400;transition:transform .25s;}
+.avo .faq details[open] summary::after{transform:rotate(45deg);}
+.avo .faq p{color:var(--ts);padding:0 4px 24px;font-size:.95rem;line-height:1.75;max-width:820px;}
+
+/* ---- contact ---- */
+.avo .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;}
+@media(max-width:880px){.avo .contact-grid{grid-template-columns:1fr;gap:36px;}}
+.avo .cinfo li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--bd-soft);align-items:flex-start;}
+.avo .cinfo li:last-child{border-bottom:none;}
+.avo .cinfo .ci{width:44px;height:44px;flex:0 0 44px;border-radius:10px;background:rgba(255,107,53,.12);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.avo .cinfo .k{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--tl);margin-bottom:3px;}
+.avo .cinfo .v{color:var(--tp);font-weight:500;}
+.avo .cinfo .v a:hover{color:var(--accent);}
+
+/* ---- forms ---- */
+.avo .formcard{background:var(--sd);border:1px solid var(--bd);border-radius:14px;padding:clamp(26px,4vw,38px);}
+.avo .fg{margin-bottom:18px;}
+.avo .fg label{display:block;font-size:.84rem;font-weight:600;color:var(--tp);margin-bottom:7px;}
+.avo .fg input,.avo .fg select,.avo .fg textarea{
+  width:100%;padding:13px 14px;background:var(--el);border:1px solid var(--bd);border-radius:7px;
+  color:var(--tp);font-family:'Inter',sans-serif;font-size:.95rem;transition:border-color .25s,box-shadow .25s;
+}
+.avo .fg input:focus,.avo .fg select:focus,.avo .fg textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,53,.18);}
+.avo .fg textarea{resize:vertical;min-height:118px;}
+.avo .fg-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:560px){.avo .fg-2{grid-template-columns:1fr;}}
+
+/* ---- CTA band ---- */
+.avo .cta-band{background:linear-gradient(135deg,#161616 0%,#0a0a0a 100%);border-block:1px solid var(--accent);text-align:center;}
+.avo .cta-band h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin-bottom:16px;}
+.avo .cta-band p{color:var(--ts);margin-bottom:30px;max-width:560px;margin-inline:auto;}
+.avo .cta-band .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ---- footer (delete for Option B) ---- */
+.avo-foot{background:#070707;border-top:1px solid var(--bd);padding:60px 0 28px;color:var(--ts);}
+.avo-foot .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;max-width:var(--maxw);margin:0 auto 38px;padding:0 24px;}
+@media(max-width:860px){.avo-foot .fgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.avo-foot .fgrid{grid-template-columns:1fr;}}
+.avo-foot .avo-foot-logo-x{height:84px;}
+.avo-foot p{font-size:.9rem;line-height:1.7;color:var(--ts);}
+.avo-foot h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;}
+.avo-foot a{display:block;color:var(--ts);font-size:.9rem;margin-bottom:11px;transition:color .25s;}
+.avo-foot a:hover{color:var(--accent);}
+.avo-foot .fbottom{border-top:1px solid var(--bd);padding:24px 24px 0;text-align:center;font-size:.82rem;color:var(--tl);max-width:var(--maxw);margin:0 auto;}
+.avo-foot .fbottom p{color:var(--tl);margin:4px 0;}
+
+/* ---- modal ---- */
+.avo-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.78);backdrop-filter:blur(5px);padding:20px;overflow:auto;}
+.avo-modal.open{display:block;}
+.avo-modal .box{background:var(--sd);border:1px solid var(--bd);border-radius:14px;max-width:520px;margin:6vh auto;padding:clamp(26px,4vw,40px);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+.avo-modal .x{position:absolute;top:16px;right:20px;font-size:1.7rem;color:var(--ts);cursor:pointer;line-height:1;background:none;border:none;}
+.avo-modal .x:hover{color:var(--accent);}
+.avo-modal h2{color:var(--accent);font-size:1.5rem;margin-bottom:8px;}
+.avo-modal .sub{color:var(--ts);font-size:.92rem;margin-bottom:22px;}
+
+@keyframes avoUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.avo .rise{animation:avoUp .7s ease-out both;}
+.avo .rise.d1{animation-delay:.08s;}
+.avo .rise.d2{animation-delay:.16s;}
+.avo .rise.d3{animation-delay:.24s;}
+@media(prefers-reduced-motion:reduce){.avo *{animation:none!important;transition:none!important;}}
+</style>
+
+</head>
+<body>
+<div class="avo">
+
+<!-- ===== NAV ===== -->
+<nav class="avo-nav">
+  <a href="index.html" class="avo-brand" aria-label="AVO Transportation home">
+    <img src="assets/avo-symbol.png" alt="" class="avo-mark">
+    <span class="avo-word">AVO<i>.</i></span>
+  </a>
+  <button class="burger" aria-label="Menu" onclick="document.getElementById('avoLinks').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+  <div class="links" id="avoLinks">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="#" class="nav-cta" onclick="avoOpen();return false;">Free Quote</a>
+  </div>
+</nav>
+
+<header class="avo-hero avo-phero">
+      <img src="assets/avo-symbol.png" alt="" class="hero-mark">
+  <div class="wrap">
+    <span class="eyebrow rise">Contact</span>
+    <h1 class="rise d1">Let's Get You a<br><span class="hl">Free Quote</span></h1>
+    <p class="lead rise d2">Email us or send the form below. We respond fast &mdash; usually within one business hour during regular hours &mdash; and we'll beat any qualifying written competitor quote.</p>
+  </div>
+</header>
+
+<section class="section bg-pd">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="rise">
+        <ul class="cinfo">
+          <li><div class="ci"><i class="fas fa-envelope"></i></div><div><div class="k">Email</div><div class="v"><a href="mailto:avotransportationllc@gmail.com">avotransportationllc@gmail.com</a></div></div></li>
+          <li><div class="ci"><i class="fas fa-bolt"></i></div><div><div class="k">Response Time</div><div class="v">Within 1 business hour<br>during regular hours</div></div></li>
+          <li><div class="ci"><i class="fas fa-clock"></i></div><div><div class="k">Hours</div><div class="v">Mon&ndash;Sat: 7am &ndash; 7pm<br>Sun: 8am &ndash; 5pm</div></div></li>
+          <li><div class="ci"><i class="fas fa-location-dot"></i></div><div><div class="k">Service Area</div><div class="v">Denver, Aurora, Boulder &amp; the Front Range</div></div></li>
+          <li><div class="ci"><i class="fas fa-shield-halved"></i></div><div><div class="k">Credentials</div><div class="v">Licensed &amp; Insured in Colorado</div></div></li>
+        </ul>
+        <div class="pricebeat" style="margin-top:8px;flex-direction:column;align-items:flex-start;">
+          <div><h3 style="font-size:1.1rem;"><i class="fas fa-trophy"></i> Bring Us a Quote</h3>
+          <p style="font-size:.9rem;">Already have a written estimate? Attach it in the form below or email it to us &mdash; we'll beat it by 5%.</p></div>
+        </div>
+      </div>
+
+      <div class="formcard rise d1">
+        <h2 style="color:#fff;font-size:1.4rem;margin-bottom:6px;">Request a Free Quote</h2>
+        <p style="color:var(--ts);font-size:.92rem;margin-bottom:22px;">No obligation. We'll reply with a price, fast.</p>
+        <form class="avo-form" onsubmit="avoSubmit(event)" novalidate>
+          <input type="hidden" name="_subject" value="New AVO quote request (contact page)">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;">
+          <div class="fg"><label for="c_name">Full Name</label><input id="c_name" name="name" required placeholder="Your name"></div>
+          <div class="fg-2">
+            <div class="fg"><label for="c_email">Email</label><input id="c_email" type="email" name="email" required placeholder="you@email.com"></div>
+            <div class="fg"><label for="c_phone">Phone (optional)</label><input id="c_phone" type="tel" name="phone" placeholder="(___) ___-____"></div>
+          </div>
+          <div class="fg"><label for="c_service">Service Needed</label>
+            <select id="c_service" name="service" required>
+              <option value="">Select a service&hellip;</option>
+              <option>Junk Removal &amp; Hauling</option>
+              <option>Pressure Washing</option>
+              <option>Fleet / Vehicle Detailing</option>
+              <option>Garage or Estate Cleanout</option>
+              <option>Home Maintenance</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="fg-2">
+            <div class="fg"><label for="c_date">Preferred Date</label><input id="c_date" type="date" name="date"></div>
+            <div class="fg"><label for="c_zip">Service ZIP</label><input id="c_zip" name="zip" placeholder="800__"></div>
+          </div>
+          <div class="fg"><label for="c_details">Project Details</label><textarea id="c_details" name="details" placeholder="What needs to go? Roughly how much? Any heavy items, stairs, or access notes?"></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Send My Request</button>
+        </form>
+        <div class="avo-form-success" style="display:none;text-align:center;padding:30px 8px 12px;">
+          <i class="fas fa-circle-check" style="font-size:3rem;color:var(--success);margin-bottom:14px;display:block;"></i>
+          <h3 style="color:#fff;margin-bottom:8px;">Request Received &mdash; Thanks!</h3>
+          <p style="color:var(--ts);font-size:.95rem;">We'll be in touch shortly with your free quote.<br>Anything to add? <a href="mailto:avotransportationllc@gmail.com" style="color:var(--accent);">Email us directly</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="avo-foot">
+  <div class="fgrid">
+    <div>
+      <img src="assets/avo-logo-full.png" alt="AVO Transportation" class="avo-foot-logo">
+      <p>Denver's trusted name in junk removal, hauling, pressure washing, fleet detailing, and home maintenance. Licensed and insured professionals serving Denver, Aurora, Boulder, and the entire Front Range with upfront, price-beat pricing.</p>
+      <p style="color:var(--tl);font-size:.8rem;margin-top:14px;">Licensed &amp; Insured &bull; Aurora, Colorado &bull; Serving the Denver Metro &amp; Front Range</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="services.html">Junk Removal</a>
+      <a href="services.html">Pressure Washing</a>
+      <a href="services.html">Fleet Detailing</a>
+      <a href="services.html">Garage &amp; Estate Cleanout</a>
+      <a href="pricing.html">Pricing &amp; Guarantee</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="about.html">About AVO</a>
+      <a href="about.html">Why Choose Us</a>
+      <a href="about.html">Service Areas</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Get In Touch</h4>
+      <a href="mailto:avotransportationllc@gmail.com">avotransportationllc@gmail.com</a>
+      <p style="margin-top:10px;color:var(--ts);font-size:.88rem;">Mon&ndash;Sat: 7am &ndash; 7pm<br>Sun: 8am &ndash; 5pm</p>
+      <p style="margin-top:10px;color:var(--tl);font-size:.82rem;">Free online quotes &mdash; fast response.</p>
+    </div>
+  </div>
+  <div class="fbottom">
+    <p>&copy; 2025 AVO Transportation LLC &bull; Professional Junk Removal &amp; Home Services &bull; All rights reserved.</p>
+    <p>Licensed &amp; Insured in Colorado</p>
+  </div>
+</footer>
+
+<!-- ===== QUOTE MODAL ===== -->
+<div class="avo-modal" id="avoModal" role="dialog" aria-modal="true" aria-label="Free quote request">
+  <div class="box">
+    <button class="x" aria-label="Close" onclick="avoClose()">&times;</button>
+    <h2>Free Quote Request</h2>
+    <p class="sub">Tell us about your project and we'll send a free, no-obligation estimate &mdash; and beat any qualifying written competitor quote.</p>
+    <form class="avo-form" onsubmit="avoSubmit(event)" novalidate>
+      <input type="hidden" name="_subject" value="New AVO quote request (modal)">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;">
+      <div class="fg"><label for="m_name">Full Name</label><input id="m_name" name="name" required placeholder="Your name"></div>
+      <div class="fg-2">
+        <div class="fg"><label for="m_email">Email</label><input id="m_email" type="email" name="email" required placeholder="you@email.com"></div>
+        <div class="fg"><label for="m_phone">Phone (optional)</label><input id="m_phone" type="tel" name="phone" placeholder="(___) ___-____"></div>
+      </div>
+      <div class="fg"><label for="m_service">Service Needed</label>
+        <select id="m_service" name="service" required>
+          <option value="">Select a service&hellip;</option>
+          <option>Junk Removal &amp; Hauling</option>
+          <option>Pressure Washing</option>
+          <option>Fleet / Vehicle Detailing</option>
+          <option>Garage or Estate Cleanout</option>
+          <option>Home Maintenance</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="fg-2">
+        <div class="fg"><label for="m_date">Preferred Date</label><input id="m_date" type="date" name="date"></div>
+        <div class="fg"><label for="m_zip">Service ZIP</label><input id="m_zip" name="zip" placeholder="800__"></div>
+      </div>
+      <div class="fg"><label for="m_details">Project Details</label><textarea id="m_details" name="details" placeholder="What needs to go? Roughly how much? Any heavy items, stairs, or access notes?"></textarea></div>
+      <button type="submit" class="btn btn-primary btn-block">Get My Free Quote</button>
+    </form>
+    <div class="avo-form-success" style="display:none;text-align:center;padding:28px 8px 12px;">
+      <i class="fas fa-circle-check" style="font-size:2.6rem;color:var(--success);margin-bottom:14px;display:block;"></i>
+      <h3 style="color:#fff;margin-bottom:8px;">Request Received &mdash; Thanks!</h3>
+      <p style="color:var(--ts);font-size:.95rem;">We'll review your project and get back to you shortly with a free, no-obligation quote.<br>Anything to add? <a href="mailto:avotransportationllc@gmail.com" style="color:var(--accent);">Email us directly</a>.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+/* ====================================================================
+   FORM ENDPOINT  —  REPLACE BEFORE LAUNCH
+   --------------------------------------------------------------------
+   Leads from this form land in YOUR Google Sheet (and trigger an
+   email notification) via a Google Apps Script Web App.
+
+   Setup is in README.md — short version:
+     1. Open a new Google Sheet, name it "AVO Leads".
+     2. Extensions → Apps Script → paste google-apps-script.gs.
+     3. Deploy → New deployment → Type: Web app
+            Execute as: Me        Who has access: Anyone
+     4. Copy the Web app URL (ends in /exec) and paste it below.
+   Both forms on the site (modal + contact page) POST to this URL.
+
+   Until configured, the form falls back to a mailto: so no lead is lost.
+   ==================================================================== */
+const AVO_FORM_ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const AVO_EMAIL = "avotransportationllc@gmail.com";
+
+(function(){
+  var m=document.getElementById('avoModal');
+  window.avoOpen=function(svc){
+    if(!m) return;
+    m.classList.add('open');
+    // reset any leftover success state
+    var f=m.querySelector('.avo-form'), s=m.querySelector('.avo-form-success');
+    if(f) f.style.display=''; if(s) s.style.display='none';
+    var sel=document.getElementById('m_service');
+    if(svc&&sel){ sel.value=svc; }
+  };
+  window.avoClose=function(){ if(m){m.classList.remove('open');} };
+  if(m){m.addEventListener('click',function(e){if(e.target===m)avoClose();});}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')avoClose();});
+
+  function showSuccess(form){
+    var container=form.parentElement;
+    var success=container.querySelector('.avo-form-success');
+    form.style.display='none';
+    if(success){ success.style.display='block'; }
+    form.reset();
+  }
+
+  window.avoSubmit=async function(e){
+    e.preventDefault();
+    var form=e.target;
+    var btn=form.querySelector('button[type="submit"]');
+    var originalLabel=btn ? btn.innerHTML : '';
+    if(btn){ btn.disabled=true; btn.innerHTML='Sending&hellip;'; }
+
+    // If endpoint not configured yet, fall back to mailto so leads aren't lost
+    if(!AVO_FORM_ENDPOINT || AVO_FORM_ENDPOINT.indexOf('PASTE_YOUR_APPS_SCRIPT_URL_HERE')!==-1){
+      var g=function(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value:'';};
+      var subj='New Quote Request — '+(g('service')||'AVO')+' — '+g('name');
+      var body='Name: '+g('name')+'%0AEmail: '+g('email')+'%0APhone: '+g('phone')
+        +'%0AService: '+g('service')+'%0APreferred Date: '+g('date')+'%0AZIP: '+g('zip')
+        +'%0A%0ADetails:%0A'+encodeURIComponent(g('details'));
+      window.location.href='mailto:'+AVO_EMAIL+'?subject='+encodeURIComponent(subj)+'&body='+body;
+      if(btn){ btn.disabled=false; btn.innerHTML=originalLabel; }
+      return;
+    }
+
+    try{
+      // Apps Script Web App receives form-encoded POSTs. We use no-cors
+      // so the browser doesn't block on cross-origin headers; the script
+      // still receives and processes the submission server-side.
+      await fetch(AVO_FORM_ENDPOINT,{
+        method:'POST',
+        mode:'no-cors',
+        body:new URLSearchParams(new FormData(form))
+      });
+      showSuccess(form);
+    } catch(err){
+      if(btn){ btn.disabled=false; btn.innerHTML=originalLabel; }
+      alert("Sorry — we couldn't send your request right now. Please email us at "+AVO_EMAIL+" and we'll get right back to you.");
+    }
+  };
+
+  var d=document.getElementById('m_date'); if(d){d.min=new Date().toISOString().split('T')[0];}
+  var d2=document.getElementById('c_date'); if(d2){d2.min=new Date().toISOString().split('T')[0];}
+})();
+</script>
+
+</body>
+</html>

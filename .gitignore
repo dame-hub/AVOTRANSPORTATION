@@ -1,0 +1,22 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# Never commit secrets (this static site has none, but just in case)
+*.env
+.env*
+secrets*
+*.key
+*.pem
+credentials*.json
+service-account*.json
+
+# Build/scratch
+node_modules/
+*.log
+.cache/
