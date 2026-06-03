@@ -2,9 +2,16 @@
 
 A code-driven 2D animated spot — **vertical 9:16 (1080×1920), 15s @ 30fps**.
 
-**"Did You Guys Teleport?!"** — the AVO crew screeches in, clears a whole garage
-in seconds, and the customer comes out in a robe with their coffee, unable to
-believe how fast it happened.
+Three spots, same goofy style & branding — each a different service:
+
+| Composition | Service | Skit |
+|---|---|---|
+| `Commercial` | Junk Removal | "Did You Guys Teleport?!" — a garage cleared in seconds |
+| `PressureWash` | Pressure Washing | "Is That My Driveway?!" — years of grime blasted away |
+| `Detailing` | Auto & Fleet Detailing | "Is That My Truck?!" — muddy pickup → showroom clean |
+
+Each is 15s, 9:16, and opens with a service tag + a benefit caption + BEFORE/AFTER
+stamps for context.
 
 ## Preview & edit
 ```bash
@@ -13,12 +20,15 @@ npm install
 npm run dev        # opens Remotion Studio in your browser to scrub/preview
 ```
 
-## Render the MP4
+## Render the MP4s
 ```bash
-npm run render     # -> out/avo-commercial.mp4
+npx remotion render Commercial   out/avo-junk-removal.mp4
+npx remotion render PressureWash out/avo-pressure-washing.mp4
+npx remotion render Detailing    out/avo-detailing.mp4
 ```
 The first render auto-downloads a headless browser (needs normal internet).
-A pre-rendered copy is committed at **`avo-commercial.mp4`**.
+Pre-rendered copies are committed at the project root:
+**`avo-commercial.mp4`**, **`avo-pressure-washing.mp4`**, **`avo-detailing.mp4`**.
 
 ## Add the AI voiceover (optional)
 The spot is fully readable **silent** (comic speech bubbles + captions), so it

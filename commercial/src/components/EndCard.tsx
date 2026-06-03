@@ -9,7 +9,10 @@ import {
 } from "remotion";
 import { C, FONT } from "../theme";
 
-export const EndCard: React.FC = () => {
+export const EndCard: React.FC<{ headline?: React.ReactNode; cta?: string }> = ({
+  headline,
+  cta = "GET A FREE QUOTE",
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const sp = (delay: number) =>
@@ -47,8 +50,12 @@ export const EndCard: React.FC = () => {
             opacity: fade(8, 18),
           }}
         >
-          JUNK GONE —<br />
-          <span style={{ color: C.orange }}>FAST.</span>
+          {headline ?? (
+            <>
+              JUNK GONE —<br />
+              <span style={{ color: C.orange }}>FAST.</span>
+            </>
+          )}
         </div>
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", margin: "46px 0", opacity: fade(20, 30) }}>
           <Chip>SAME-DAY</Chip>
@@ -69,7 +76,7 @@ export const EndCard: React.FC = () => {
             boxShadow: "0 12px 0 #b8401a",
           }}
         >
-          GET A FREE QUOTE
+          {cta}
         </div>
         <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 52, color: "#fff", marginTop: 42, letterSpacing: 1, opacity: fade(40, 50) }}>
           avotransportation.com
