@@ -1,0 +1,22 @@
+{
+  "name": "avo-commercial",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AVO Transportation 15s animated commercial (Remotion)",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render Commercial out/avo-commercial.mp4 --overwrite",
+    "still": "remotion still Commercial out/frame.png --frame=120"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  }
+}
