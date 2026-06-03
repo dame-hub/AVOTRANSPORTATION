@@ -4,14 +4,17 @@ A code-driven 2D animated spot — **vertical 9:16 (1080×1920), 15s @ 30fps**.
 
 Three spots, same goofy style & branding — each a different service:
 
-| Composition | Service | Skit |
-|---|---|---|
-| `Commercial` | Junk Removal | "Did You Guys Teleport?!" — a garage cleared in seconds |
-| `PressureWash` | Pressure Washing | "Is That My Driveway?!" — years of grime blasted away |
-| `Detailing` | Auto & Fleet Detailing | "Is That My Truck?!" — muddy pickup → showroom clean |
+| Composition | Service | Setting | Skit |
+|---|---|---|---|
+| `Commercial` | Junk Removal | Front driveway | "Did You Guys Teleport?!" — a garage cleared in seconds |
+| `PressureWash` | Pressure Washing | Front driveway | "Is That My Driveway?!" — grime blasted away |
+| `Detailing` | Auto & Fleet Detailing | Driveway | "Is That My Truck?!" — muddy pickup → showroom clean |
+| `Cleanout` | Estate & Garage Cleanout | Inside (living room) | "Where'd All My Junk Go?!" — a cluttered room emptied |
+| `DeckWash` | Pressure Washing | Backyard (deck) | "Is That the Same Deck?!" — a grimy deck restored |
 
 Each is 15s, 9:16, and opens with a service tag + a benefit caption + BEFORE/AFTER
-stamps for context.
+stamps for context. Reusable scenes live in `src/components/`
+(`Background` = front yard, `Interior` = living room, `Backyard` = deck).
 
 ## Preview & edit
 ```bash
@@ -25,10 +28,13 @@ npm run dev        # opens Remotion Studio in your browser to scrub/preview
 npx remotion render Commercial   out/avo-junk-removal.mp4
 npx remotion render PressureWash out/avo-pressure-washing.mp4
 npx remotion render Detailing    out/avo-detailing.mp4
+npx remotion render Cleanout     out/avo-cleanout.mp4
+npx remotion render DeckWash     out/avo-deck-wash.mp4
 ```
 The first render auto-downloads a headless browser (needs normal internet).
 Pre-rendered copies are committed at the project root:
-**`avo-commercial.mp4`**, **`avo-pressure-washing.mp4`**, **`avo-detailing.mp4`**.
+**`avo-commercial.mp4`**, **`avo-pressure-washing.mp4`**, **`avo-detailing.mp4`**,
+**`avo-cleanout.mp4`**, **`avo-deck-wash.mp4`**.
 
 ## Add the AI voiceover (optional)
 The spot is fully readable **silent** (comic speech bubbles + captions), so it
