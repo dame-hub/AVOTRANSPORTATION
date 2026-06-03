@@ -35,6 +35,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://avotransportation.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AVO Transportation">
+<meta property="og:title" content="Contact & Book | AVO Transportation Denver">
+<meta property="og:description" content="Get a free quote or book your junk removal, pressure washing or detailing online. Serving Denver, Aurora, Boulder & the Front Range.">
+<meta property="og:url" content="https://avotransportation.com/contact.html">
+<meta property="og:image" content="https://avotransportation.com/assets/avo-logo-full.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact & Book | AVO Transportation Denver">
+<meta name="twitter:description" content="Get a free quote or book your junk removal, pressure washing or detailing online. Serving Denver, Aurora, Boulder & the Front Range.">
+<meta name="twitter:image" content="https://avotransportation.com/assets/avo-logo-full.png">
 
 <style>
 /* ============ AVO design system — scoped under .avo ============ */
@@ -347,6 +358,7 @@
     <a href="pricing.html">Pricing</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html#book">Book</a>
     <a href="#" class="nav-cta" onclick="avoOpen();return false;">Free Quote</a>
   </div>
 </nav>
@@ -393,6 +405,39 @@
   </div>
 </section>
 
+
+<!-- ===== BOOK ONLINE ===== -->
+<section class="section bg-sd" id="book" style="scroll-margin-top:90px;">
+  <div class="wrap">
+    <div class="head-block center">
+      <span class="eyebrow center">Book Online</span>
+      <h2 class="h-section">Schedule Your Service Instantly</h2>
+      <p class="lead">Pick a time that works for you &mdash; your booking lands straight on our calendar and you get an instant confirmation. No phone tag, no waiting.</p>
+    </div>
+    <div class="center">
+      <a id="avoBookBtn" href="#quote" class="btn btn-primary" style="font-size:1.05rem;padding:18px 42px;"><i class="fas fa-calendar-check"></i> Book Now &mdash; Pick a Time</a>
+      <p style="color:var(--tl);font-size:.86rem;margin-top:16px;">Prefer a custom price first? <a href="#quote" style="color:var(--accent);">Request a free quote above.</a></p>
+    </div>
+  </div>
+</section>
+
+<!--
+  ====== FREE GOOGLE CALENDAR BOOKING (about 5 min, optional) ======
+  Bookings drop straight onto your Google Calendar and email you, and the
+  customer gets an automatic confirmation:
+    1. Google Calendar -> Create -> "Appointment schedule".
+    2. Name it "AVO Service Booking", set your hours + slot length, and
+       turn on email confirmations/notifications.
+    3. "Open booking page" -> Share -> copy the link
+       (e.g. https://calendar.app.google/XXXXXXXX ).
+    4. In the booking <script> near the bottom of this file, set
+       AVO_BOOKING_URL to that link. The "Book Now" button then opens your
+       live booking page in a new tab.
+    (Until then, the button routes to the quote form so no lead is lost.)
+  To embed it inline instead, replace the <a id="avoBookBtn"> above with:
+    <iframe src="YOUR_LINK?gv=true" style="border:0;width:100%;min-height:720px;border-radius:14px;"></iframe>
+  =================================================================
+-->
 
 <!-- ===== FOOTER ===== -->
 <footer class="avo-foot">
@@ -547,5 +592,14 @@ const AVO_EMAIL = "avotransportationllc@gmail.com";
 })();
 </script>
 
+<script>
+  /* Online booking — paste your free Google Calendar appointment-schedule
+     link between the quotes to activate the "Book Now" button. */
+  var AVO_BOOKING_URL = "";
+  (function () {
+    var bb = document.getElementById('avoBookBtn');
+    if (bb && AVO_BOOKING_URL) { bb.href = AVO_BOOKING_URL; bb.target = "_blank"; bb.rel = "noopener"; }
+  })();
+</script>
 </body>
 </html>
