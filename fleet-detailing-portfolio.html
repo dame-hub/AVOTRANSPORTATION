@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AVO Transportation — Fleet &amp; Dealership Detailing Portfolio</title>
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+    color: #1c2230; line-height: 1.5; font-size: 11pt;
+  }
+  :root {
+    --orange:#ff6b35; --orange-dk:#d44d1e; --ink:#14181f; --ink2:#2b333f;
+    --muted:#6b7480; --line:#e6e9ee; --soft:#f6f7f9; --green:#1f7a4d;
+  }
+  h1,h2,h3,h4 { margin:0; color:var(--ink); font-weight:800; letter-spacing:-.01em; line-height:1.12; }
+  p { margin:0 0 10px; }
+  strong { color:var(--ink); }
+  .page {
+    width:8.5in; min-height:11in; padding:0.72in 0.78in 0.95in; position:relative;
+    background:#fff; page-break-after:always; overflow:hidden;
+  }
+  .page:last-child { page-break-after:auto; }
+
+  /* ---- eyebrow + headings ---- */
+  .eyebrow { font-size:9pt; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:var(--orange); display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .eyebrow::before { content:""; width:26px; height:3px; background:var(--orange); display:inline-block; border-radius:2px; }
+  h2.sec { font-size:23pt; margin-bottom:14px; }
+  .lead { color:var(--ink2); font-size:12pt; max-width:6.3in; }
+
+  /* ---- footer ---- */
+  .foot { position:absolute; left:0.78in; right:0.78in; bottom:0.5in; border-top:1px solid var(--line); padding-top:8px; display:flex; justify-content:space-between; font-size:8pt; color:var(--muted); letter-spacing:.02em; }
+  .foot b { color:var(--ink2); font-weight:700; }
+
+  /* ================= COVER ================= */
+  .cover { background:radial-gradient(120% 80% at 70% -10%, rgba(255,107,53,.28), transparent 55%), linear-gradient(160deg,#0c0c0c 0%,#181b22 100%); color:#fff; display:flex; flex-direction:column; padding:0.95in 0.85in; }
+  .cover .logo { height:0.78in; width:auto; margin-bottom:0.5in; }
+  .cover .kicker { font-size:10pt; font-weight:800; letter-spacing:.34em; text-transform:uppercase; color:var(--orange); margin-bottom:18px; }
+  .cover h1 { color:#fff; font-size:40pt; line-height:1.02; letter-spacing:-.02em; }
+  .cover h1 span { color:var(--orange); }
+  .cover .sub { color:#cdd3dc; font-size:14pt; font-weight:500; margin-top:16px; max-width:5.6in; }
+  .cover .rule { height:3px; width:90px; background:var(--orange); border-radius:2px; margin:26px 0; }
+  .cover .prepared { margin-top:auto; }
+  .cover .prepared .lbl { font-size:9pt; letter-spacing:.18em; text-transform:uppercase; color:#9aa3af; margin-bottom:8px; }
+  .cover .prepared .line { border-bottom:1.5px solid #3a414c; height:30px; max-width:4.6in; }
+  .cover .cfoot { margin-top:34px; display:flex; flex-wrap:wrap; gap:6px 22px; font-size:9.5pt; color:#aeb6c0; }
+  .cover .cfoot b { color:#fff; }
+  .cover .chips { display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .cover .chip { font-size:8.5pt; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#ffd9c9; border:1px solid rgba(255,107,53,.5); background:rgba(255,107,53,.12); border-radius:30px; padding:6px 14px; }
+
+  /* ---- stat row ---- */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0 6px; }
+  .stat { background:var(--soft); border:1px solid var(--line); border-radius:10px; padding:16px 14px; text-align:center; }
+  .stat .n { font-size:17pt; font-weight:800; color:var(--orange); }
+  .stat .l { font-size:8.5pt; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-top:4px; }
+
+  .callout { background:linear-gradient(135deg,#fff6f1,#fff); border:1px solid #ffd5c4; border-left:5px solid var(--orange); border-radius:10px; padding:18px 22px; margin:18px 0; }
+  .callout h3 { color:var(--orange-dk); font-size:13pt; margin-bottom:6px; }
+
+  ul.ticks { list-style:none; margin:10px 0; padding:0; }
+  ul.ticks li { position:relative; padding:6px 0 6px 26px; color:var(--ink2); font-size:10.5pt; }
+  ul.ticks li::before { content:"\2713"; position:absolute; left:0; top:6px; color:var(--orange); font-weight:800; }
+
+  /* ---- service cards ---- */
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
+  .card { border:1px solid var(--line); border-radius:11px; padding:16px 18px; background:#fff; }
+  .card h4 { font-size:12pt; margin-bottom:5px; display:flex; align-items:center; gap:8px; }
+  .card h4 .dot { width:9px; height:9px; border-radius:50%; background:var(--orange); display:inline-block; }
+  .card p { font-size:10pt; color:var(--ink2); margin:0; }
+
+  /* ---- checklist columns ---- */
+  .checkwrap { display:grid; grid-template-columns:1fr 1fr; gap:10px 34px; margin-top:6px; }
+  .checkcol h4 { font-size:10.5pt; color:var(--orange-dk); text-transform:uppercase; letter-spacing:.08em; margin:8px 0 4px; }
+  .checkcol ul { list-style:none; margin:0; padding:0; }
+  .checkcol li { position:relative; padding:4px 0 4px 20px; font-size:9.7pt; color:var(--ink2); }
+  .checkcol li::before { content:"\2713"; position:absolute; left:0; color:var(--orange); font-weight:800; font-size:9pt; }
+
+  /* ---- tables ---- */
+  table { width:100%; border-collapse:collapse; margin:8px 0 4px; font-size:10pt; }
+  thead th { background:var(--ink); color:#fff; text-align:left; padding:10px 12px; font-size:9pt; text-transform:uppercase; letter-spacing:.06em; }
+  thead th.r { text-align:right; }
+  tbody td { padding:10px 12px; border-bottom:1px solid var(--line); color:var(--ink2); }
+  tbody td.r { text-align:right; }
+  tbody tr:nth-child(even) td { background:var(--soft); }
+  .avo { color:var(--orange-dk); font-weight:800; }
+  .save { color:var(--green); font-weight:700; }
+  td .was { color:var(--muted); }
+  .tnote { font-size:8pt; color:var(--muted); margin-top:8px; line-height:1.5; }
+
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:12px 0; }
+  .tier { border:1px solid var(--line); border-radius:11px; padding:16px; text-align:center; }
+  .tier.best { border-color:var(--orange); box-shadow:0 6px 18px rgba(255,107,53,.14); }
+  .tier .vol { font-size:9pt; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+  .tier .off { font-size:21pt; font-weight:800; color:var(--orange); margin:4px 0; }
+  .tier .x { font-size:8.5pt; color:var(--ink2); }
+
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+
+  .cta { background:linear-gradient(135deg,#0c0c0c,#1c2029); color:#fff; border-radius:14px; padding:26px 30px; margin-top:14px; }
+  .cta h3 { color:#fff; font-size:16pt; margin-bottom:8px; }
+  .cta p { color:#c8cfd8; font-size:10.5pt; }
+  .cta .row { display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:14px; font-size:11pt; }
+  .cta .row b { color:var(--orange); }
+  .pill { display:inline-block; background:var(--orange); color:#fff; font-weight:800; font-size:11pt; padding:12px 22px; border-radius:8px; letter-spacing:.02em; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover">
+  <img src="assets/avo-logo-full.png" alt="AVO Transportation" class="logo">
+  <div class="kicker">Fleet &amp; Dealership Detailing</div>
+  <h1>Reconditioning<br><span>Partnership Portfolio</span></h1>
+  <p class="sub">Recon-ready vehicles, obsessive detail, and per-unit pricing built for volume &mdash; so your inventory sells faster and looks sharper.</p>
+  <div class="rule"></div>
+  <div class="prepared">
+    <div class="lbl">Prepared exclusively for</div>
+    <div class="line"></div>
+  </div>
+  <div class="chips">
+    <span class="chip">6 Yrs Combined Experience</span>
+    <span class="chip">Licensed &amp; Insured</span>
+    <span class="chip">On-Site / Mobile</span>
+    <span class="chip">Volume Pricing</span>
+  </div>
+  <div class="cfoot">
+    <span><b>AVO Transportation LLC</b></span>
+    <span>Denver Metro &amp; Front Range, CO</span>
+    <span><b>avotransportation.com</b></span>
+    <span>avotransportationllc@gmail.com</span>
+  </div>
+</section>
+
+<!-- ============ WHO WE ARE ============ -->
+<section class="page">
+  <div class="eyebrow">Who We Are</div>
+  <h2 class="sec">Detailing Obsessives Your Lot Can Rely On</h2>
+  <p class="lead">AVO Transportation is a locally owned Denver reconditioning and detailing company built specifically to keep dealership inventory front-line ready. Between our team we bring <strong>6 years of combined, hands-on detailing experience</strong> &mdash; and we treat every vehicle like it's about to sit on our own showroom floor.</p>
+
+  <div class="callout">
+    <h3>We are relentlessly attentive &mdash; on purpose.</h3>
+    <p style="margin:0;color:var(--ink2);">We're the kind of detailers who chase down every fingerprint, vacuum out every seat track, scrub every vent, and dress every tire. That obsessiveness isn't just pride &mdash; a sharper car photographs better, shows better, and <strong>sells faster and for more money.</strong></p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">6 yrs</div><div class="l">Combined Experience</div></div>
+    <div class="stat"><div class="n">40+ pt</div><div class="l">Recon Checklist</div></div>
+    <div class="stat"><div class="n">Same&nbsp;Day</div><div class="l">Turnaround Available</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Re-Do Guarantee</div></div>
+  </div>
+
+  <div class="two" style="margin-top:20px;">
+    <div>
+      <h4 style="font-size:12pt;margin-bottom:8px;">What you get with AVO</h4>
+      <ul class="ticks">
+        <li>A consistent, repeatable result on every unit</li>
+        <li>Licensed, insured, background-checked crew</li>
+        <li>On-site at your lot &mdash; or pickup &amp; return</li>
+        <li>Flexible volume scheduling around your sales floor</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:12pt;margin-bottom:8px;">Why dealers switch to us</h4>
+      <ul class="ticks">
+        <li>Lower cost per unit than typical recon vendors</li>
+        <li>Faster turn = inventory online &amp; selling sooner</li>
+        <li>One simple monthly invoice, predictable pricing</li>
+        <li>A real point of contact who answers the phone</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot"><span><b>AVO Transportation LLC</b> &mdash; Fleet &amp; Dealership Detailing</span><span>avotransportation.com</span></div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page">
+  <div class="eyebrow">Services</div>
+  <h2 class="sec">Built Around How a Lot Actually Runs</h2>
+  <p class="lead">From a quick lot refresh to a full front-line recon, we cover every stage of getting a vehicle photo-ready and sale-ready.</p>
+
+  <div class="cards" style="margin-top:18px;">
+    <div class="card"><h4><span class="dot"></span>Front-Line / Showroom Detail</h4><p>Full reconditioning detail for your best inventory &mdash; deep interior, paint clean-up, and a true showroom shine.</p></div>
+    <div class="card"><h4><span class="dot"></span>Used-Car Recon Detail</h4><p>The everyday workhorse: wash, full interior, shampoo/extract, windows, jambs, tires &mdash; lot-ready in one pass.</p></div>
+    <div class="card"><h4><span class="dot"></span>Photo-Prep Detail</h4><p>A fast, clean refresh timed for your online listings so every unit looks its best in the gallery.</p></div>
+    <div class="card"><h4><span class="dot"></span>Lot Maintenance Wash</h4><p>Scheduled wash &amp; wipe-down to keep aging inventory dust-free and presentable week after week.</p></div>
+    <div class="card"><h4><span class="dot"></span>Trade-In &amp; New-Arrival Intake</h4><p>Quick-turn intake detail so trades and auction buys hit the line clean and ready to appraise.</p></div>
+    <div class="card"><h4><span class="dot"></span>Add-On Reconditioning</h4><p>Headlight restoration, odor/smoke removal, engine-bay detail, ceramic spray sealant, pet-hair &amp; heavy-soil.</p></div>
+  </div>
+
+  <div class="callout" style="margin-top:22px;">
+    <h3>Flexible to your operation</h3>
+    <p style="margin:0;color:var(--ink2);">We come <strong>on-site to your lot</strong> with our own equipment and water, or run <strong>pickup &amp; return</strong>. Set a standing weekly schedule or call us per batch &mdash; we flex to your inventory flow and your sales calendar.</p>
+  </div>
+
+  <div class="foot"><span><b>AVO Transportation LLC</b> &mdash; Fleet &amp; Dealership Detailing</span><span>avotransportation.com</span></div>
+</section>
+
+<!-- ============ PROCESS / OBSESSIVE ============ -->
+<section class="page">
+  <div class="eyebrow">Our Process</div>
+  <h2 class="sec">The AVO Multi-Point Recon Detail</h2>
+  <p class="lead">Every vehicle runs the same disciplined checklist, then a final inspection under light before it's handed back. Nothing goes back on your line half-done.</p>
+
+  <div class="checkwrap" style="margin-top:16px;">
+    <div class="checkcol">
+      <h4>Exterior</h4>
+      <ul>
+        <li>Foam pre-soak &amp; safe two-bucket hand wash</li>
+        <li>Wheels, barrels &amp; tire walls degreased</li>
+        <li>Door, hood &amp; trunk jambs cleaned</li>
+        <li>Bug, tar &amp; sap removal</li>
+        <li>Clay-bar paint decontamination*</li>
+        <li>Machine polish / swirl reduction*</li>
+        <li>Wax or spray sealant applied</li>
+        <li>Tires dressed, trim &amp; plastics restored</li>
+        <li>Chrome &amp; exhaust tips polished</li>
+        <li>Headlight clarity check / restoration*</li>
+        <li>Exterior glass cleaned, streak-free</li>
+      </ul>
+      <h4>Finishing &amp; QC</h4>
+      <ul>
+        <li>Final walk-around inspection under light</li>
+        <li>Re-wipe of any missed touch points</li>
+        <li>Photo-ready check for your listing</li>
+        <li>Vehicle staged &amp; keys returned</li>
+      </ul>
+    </div>
+    <div class="checkcol">
+      <h4>Interior</h4>
+      <ul>
+        <li>Full vacuum &mdash; seats, carpet, mats, trunk</li>
+        <li>Seat tracks, rails &amp; crevices detailed</li>
+        <li>Vents, buttons &amp; seams brushed out</li>
+        <li>Dash, console &amp; doors cleaned + UV protectant</li>
+        <li>Leather cleaned &amp; conditioned</li>
+        <li>Cloth seats &amp; carpet shampooed / extracted*</li>
+        <li>Floor mats deep-cleaned</li>
+        <li>Cup holders &amp; door pockets emptied &amp; wiped</li>
+        <li>Headliner spot-cleaned</li>
+        <li>Interior glass &amp; mirrors polished</li>
+        <li>Odor neutralized / ozone treatment*</li>
+        <li>All touch points sanitized &amp; finger-print free</li>
+      </ul>
+      <div class="callout" style="margin-top:10px;padding:12px 16px;">
+        <p style="margin:0;font-size:9.5pt;color:var(--ink2);"><strong>Our guarantee:</strong> if a unit isn't right, we re-do it free &mdash; before it ever goes back on your line.</p>
+      </div>
+    </div>
+  </div>
+  <p class="tnote">* Included at the Full Recon / Premium Showroom level or as an add-on; standard at every level otherwise.</p>
+
+  <div class="foot"><span><b>AVO Transportation LLC</b> &mdash; Fleet &amp; Dealership Detailing</span><span>avotransportation.com</span></div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="page">
+  <div class="eyebrow">Contract Pricing</div>
+  <h2 class="sec">Volume Pricing That Beats Typical Recon Vendors</h2>
+  <p class="lead">Dealers commonly pay <strong>$50&ndash;$75 per vehicle</strong> for pre-delivery detailing and <strong>$100+</strong> for a full used-car detail. Our standing-contract rates come in well under that &mdash; before volume discounts.</p>
+
+  <table>
+    <thead><tr><th>Per-Vehicle Service</th><th>Typical Denver Vendor</th><th class="r">AVO Contract</th><th class="r">You Save</th></tr></thead>
+    <tbody>
+      <tr><td>Lot Maintenance Wash</td><td class="was">$25&ndash;$40</td><td class="r avo">$18</td><td class="r save">~40%</td></tr>
+      <tr><td>Express Recon Detail</td><td class="was">$50&ndash;$75</td><td class="r avo">$49</td><td class="r save">up to 35%</td></tr>
+      <tr><td>Full Recon / Front-Line Detail</td><td class="was">$100&ndash;$175</td><td class="r avo">$99</td><td class="r save">up to 43%</td></tr>
+      <tr><td>Premium Showroom Detail</td><td class="was">$175&ndash;$275</td><td class="r avo">$159</td><td class="r save">up to 42%</td></tr>
+      <tr><td>Photo-Prep Detail</td><td class="was">$50&ndash;$80</td><td class="r avo">$39</td><td class="r save">up to 50%</td></tr>
+    </tbody>
+  </table>
+
+  <h4 style="font-size:11pt;margin:18px 0 2px;">Add-On Reconditioning</h4>
+  <table>
+    <thead><tr><th>Add-On</th><th>Typical Vendor</th><th class="r">AVO Contract</th></tr></thead>
+    <tbody>
+      <tr><td>Headlight restoration (pair)</td><td class="was">$40&ndash;$60</td><td class="r avo">$25</td></tr>
+      <tr><td>Odor / ozone &amp; smoke treatment</td><td class="was">$50&ndash;$90</td><td class="r avo">$35</td></tr>
+      <tr><td>Engine-bay detail</td><td class="was">$30&ndash;$50</td><td class="r avo">$20</td></tr>
+      <tr><td>Ceramic spray sealant (6-mo)</td><td class="was">$60&ndash;$120</td><td class="r avo">$49</td></tr>
+    </tbody>
+  </table>
+
+  <h4 style="font-size:11pt;margin:20px 0 6px;">Standing-Contract Volume Discounts</h4>
+  <div class="tiers">
+    <div class="tier"><div class="vol">10&ndash;24 / month</div><div class="off">10% off</div><div class="x">every unit, every service</div></div>
+    <div class="tier best"><div class="vol">25&ndash;49 / month</div><div class="off">15% off</div><div class="x">+ priority scheduling</div></div>
+    <div class="tier"><div class="vol">50+ / month</div><div class="off">20% off</div><div class="x">+ dedicated account manager</div></div>
+  </div>
+  <p class="tnote">Market comparison reflects 2026 Denver-metro and national detailing/reconditioning rates (Housecall Pro 2026 detailing guide; industry recon data). AVO contract rates are flat per-unit for standard, ground-condition vehicles; heavy soil, biohazard, or paint correction quoted up front. Rates locked for the contract term.</p>
+
+  <div class="foot"><span><b>AVO Transportation LLC</b> &mdash; Fleet &amp; Dealership Detailing</span><span>avotransportation.com</span></div>
+</section>
+
+<!-- ============ WHY + NEXT STEPS ============ -->
+<section class="page">
+  <div class="eyebrow">The Partnership</div>
+  <h2 class="sec">A Detail Partner, Not Just a Vendor</h2>
+
+  <div class="two" style="margin-top:8px;">
+    <div>
+      <h4 style="font-size:12pt;margin-bottom:8px;">What a contract with AVO means for you</h4>
+      <ul class="ticks">
+        <li><strong>Lower cost per unit</strong> than typical recon vendors</li>
+        <li><strong>Faster turn</strong> &mdash; units online and selling sooner</li>
+        <li><strong>Consistent quality</strong> on every car, every time</li>
+        <li><strong>One monthly invoice</strong> &mdash; simple, predictable</li>
+        <li><strong>Flexible scheduling</strong> around your sales floor</li>
+        <li><strong>A dedicated contact</strong> who actually answers</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:12pt;margin-bottom:8px;">Simple, low-risk terms</h4>
+      <ul class="ticks">
+        <li>Month-to-month &mdash; no long lock-in</li>
+        <li>Volume pricing locked for the term</li>
+        <li>On-site or pickup &amp; return, your call</li>
+        <li>Licensed &amp; insured &mdash; certificate on request</li>
+        <li>100% re-do guarantee on any unit</li>
+        <li>Net-15 invoicing available for contracts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:18px;">
+    <h3>Let's start with a free sample detail.</h3>
+    <p style="margin:0;color:var(--ink2);">Pick one unit on your lot and we'll fully recon it &mdash; on us &mdash; so you can see the AVO standard before you commit to anything. If it doesn't impress you, there's no pitch and no pressure.</p>
+  </div>
+
+  <div class="cta">
+    <h3>Ready to sharpen your inventory and your margins?</h3>
+    <p>Let's set up your free sample detail and build a volume plan around your lot.</p>
+    <div class="row">
+      <span><b>Email</b> &nbsp;avotransportationllc@gmail.com</span>
+      <span><b>Web</b> &nbsp;avotransportation.com</span>
+      <span><b>Book</b> &nbsp;avotransportation.com/contact.html#book</span>
+    </div>
+    <div style="margin-top:18px;"><span class="pill">AVO Transportation &mdash; Fleet &amp; Dealership Detailing</span></div>
+  </div>
+
+  <div class="foot"><span><b>AVO Transportation LLC</b> &mdash; Licensed &amp; Insured &middot; Denver Metro &amp; Front Range</span><span>avotransportation.com</span></div>
+</section>
+
+</body>
+</html>
