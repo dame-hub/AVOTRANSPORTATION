@@ -603,14 +603,17 @@ const AVO_EMAIL = "avotransportationllc@gmail.com";
      (best), or the short calendar.app.google/XXXX link. The inline calendar
      then appears in the Book Online section and customers can pick a day &
      time. Until it's set, visitors see a "request a quote" card. */
-  var AVO_BOOKING_URL = "";
+  var AVO_BOOKING_URL = "https://calendar.app.google/x9CKGofJeRbPoYvw5";
   (function () {
     if (!AVO_BOOKING_URL) return;
     var src = AVO_BOOKING_URL + (AVO_BOOKING_URL.indexOf('?') > -1 ? '&' : '?') + 'gv=true';
     var box = document.getElementById('avoBookEmbed');
     if (box) {
-      box.innerHTML = '<iframe title="Book an appointment with AVO Transportation" src="' + src +
-        '" style="border:0;width:100%;height:760px;border-radius:14px;background:#fff;" loading="lazy"></iframe>';
+      box.innerHTML =
+        '<iframe title="Book an appointment with AVO Transportation" src="' + src +
+        '" style="border:0;width:100%;height:760px;border-radius:14px;background:#fff;" loading="lazy"></iframe>' +
+        '<p style="text-align:center;margin-top:12px;font-size:.86rem;color:var(--tl);">Calendar not loading? ' +
+        '<a href="' + AVO_BOOKING_URL + '" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">Open the booking page &rarr;</a></p>';
     }
   })();
 </script>
