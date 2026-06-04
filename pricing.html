@@ -5,31 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pricing & Price-Beat Guarantee | AVO Junk Removal Denver</title>
 <meta name="description" content="Compare AVO's published junk removal and cleaning prices against Denver competitors. Written price-beat guarantee, no hidden fees, free quotes.">
-<!--
-============================================================================
-  AVO TRANSPORTATION LLC  —  PRICING PAGE
-  Static HTML, GitHub Pages-ready. No build step, no framework.
-
-  DEPLOY (one time)
-  -----------------
-   1.  Create a GitHub repo (e.g. "avo-website") and push every file
-       in this folder to the repo root.
-   2.  On GitHub:  Settings  →  Pages  →  Source = main, folder = / (root).
-       Pages will publish at  https://<username>.github.io/<repo>/
-       (For a user/org site, name the repo  <username>.github.io  and
-        it publishes at  https://<username>.github.io/  instead.)
-   3.  (Optional) Custom domain:  add a file named  CNAME  containing your
-       domain (e.g.  www.avotransportation.com ), then point an A/ALIAS
-       record at GitHub Pages per their docs.
-
-  BEFORE LAUNCH — required edits
-  ------------------------------
-   *  Set up your Google Sheets lead tracker (see google-apps-script.gs
-      and README.md). Then replace the endpoint placeholder in this file:
-         const AVO_FORM_ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
-   *  Confirm the email address  avotransportationllc@gmail.com.
-============================================================================
--->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -517,121 +492,11 @@
   </div>
 </footer>
 
-<!-- ===== QUOTE MODAL ===== -->
-<div class="avo-modal" id="avoModal" role="dialog" aria-modal="true" aria-label="Free quote request">
-  <div class="box">
-    <button class="x" aria-label="Close" onclick="avoClose()">&times;</button>
-    <h2>Free Quote Request</h2>
-    <p class="sub">Tell us about your project and we'll send a free, no-obligation estimate &mdash; and beat any qualifying written competitor quote.</p>
-    <form class="avo-form" onsubmit="avoSubmit(event)" novalidate>
-      <input type="hidden" name="_subject" value="New AVO quote request (modal)">
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;">
-      <div class="fg"><label for="m_name">Full Name</label><input id="m_name" name="name" required placeholder="Your name"></div>
-      <div class="fg-2">
-        <div class="fg"><label for="m_email">Email</label><input id="m_email" type="email" name="email" required placeholder="you@email.com"></div>
-        <div class="fg"><label for="m_phone">Phone (optional)</label><input id="m_phone" type="tel" name="phone" placeholder="(___) ___-____"></div>
-      </div>
-      <div class="fg"><label for="m_service">Service Needed</label>
-        <select id="m_service" name="service" required>
-          <option value="">Select a service&hellip;</option>
-          <option>Junk Removal &amp; Hauling</option>
-          <option>Pressure Washing</option>
-          <option>Fleet / Vehicle Detailing</option>
-          <option>Garage or Estate Cleanout</option>
-          <option>Home Maintenance</option>
-          <option>Other / Not Sure</option>
-        </select>
-      </div>
-      <div class="fg-2">
-        <div class="fg"><label for="m_date">Preferred Date</label><input id="m_date" type="date" name="date"></div>
-        <div class="fg"><label for="m_zip">Service ZIP</label><input id="m_zip" name="zip" placeholder="800__"></div>
-      </div>
-      <div class="fg"><label for="m_details">Project Details</label><textarea id="m_details" name="details" placeholder="What needs to go? Roughly how much? Any heavy items, stairs, or access notes?"></textarea></div>
-      <button type="submit" class="btn btn-primary btn-block">Get My Free Quote</button>
-    </form>
-    <div class="avo-form-success" style="display:none;text-align:center;padding:28px 8px 12px;">
-      <i class="fas fa-circle-check" style="font-size:2.6rem;color:var(--success);margin-bottom:14px;display:block;"></i>
-      <h3 style="color:#fff;margin-bottom:8px;">Request Received &mdash; Thanks!</h3>
-      <p style="color:var(--ts);font-size:.95rem;">We'll review your project and get back to you shortly with a free, no-obligation quote.<br>Anything to add? <a href="mailto:avotransportationllc@gmail.com" style="color:var(--accent);">Email us directly</a>.</p>
-    </div>
-  </div>
-</div>
 </div>
 
 <script>
-/* ====================================================================
-   FORM ENDPOINT  —  REPLACE BEFORE LAUNCH
-   --------------------------------------------------------------------
-   Leads from this form land in YOUR Google Sheet (and trigger an
-   email notification) via a Google Apps Script Web App.
-
-   Setup is in README.md — short version:
-     1. Open a new Google Sheet, name it "AVO Leads".
-     2. Extensions → Apps Script → paste google-apps-script.gs.
-     3. Deploy → New deployment → Type: Web app
-            Execute as: Me        Who has access: Anyone
-     4. Copy the Web app URL (ends in /exec) and paste it below.
-   Both forms on the site (modal + contact page) POST to this URL.
-
-   Until configured, the form falls back to a mailto: so no lead is lost.
-   ==================================================================== */
-const AVO_FORM_ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
-const AVO_EMAIL = "avotransportationllc@gmail.com";
-
-(function(){
-  var m=document.getElementById('avoModal');
-  /* Quote CTAs now route to the embedded Google Form on the contact page */
-  window.avoOpen=function(){ window.location.href='contact.html#quote'; };
-  window.avoClose=function(){ if(m){m.classList.remove('open');} };
-  if(m){m.addEventListener('click',function(e){if(e.target===m)avoClose();});}
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')avoClose();});
-
-  function showSuccess(form){
-    var container=form.parentElement;
-    var success=container.querySelector('.avo-form-success');
-    form.style.display='none';
-    if(success){ success.style.display='block'; }
-    form.reset();
-  }
-
-  window.avoSubmit=async function(e){
-    e.preventDefault();
-    var form=e.target;
-    var btn=form.querySelector('button[type="submit"]');
-    var originalLabel=btn ? btn.innerHTML : '';
-    if(btn){ btn.disabled=true; btn.innerHTML='Sending&hellip;'; }
-
-    // If endpoint not configured yet, fall back to mailto so leads aren't lost
-    if(!AVO_FORM_ENDPOINT || AVO_FORM_ENDPOINT.indexOf('PASTE_YOUR_APPS_SCRIPT_URL_HERE')!==-1){
-      var g=function(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value:'';};
-      var subj='New Quote Request — '+(g('service')||'AVO')+' — '+g('name');
-      var body='Name: '+g('name')+'%0AEmail: '+g('email')+'%0APhone: '+g('phone')
-        +'%0AService: '+g('service')+'%0APreferred Date: '+g('date')+'%0AZIP: '+g('zip')
-        +'%0A%0ADetails:%0A'+encodeURIComponent(g('details'));
-      window.location.href='mailto:'+AVO_EMAIL+'?subject='+encodeURIComponent(subj)+'&body='+body;
-      if(btn){ btn.disabled=false; btn.innerHTML=originalLabel; }
-      return;
-    }
-
-    try{
-      // Apps Script Web App receives form-encoded POSTs. We use no-cors
-      // so the browser doesn't block on cross-origin headers; the script
-      // still receives and processes the submission server-side.
-      await fetch(AVO_FORM_ENDPOINT,{
-        method:'POST',
-        mode:'no-cors',
-        body:new URLSearchParams(new FormData(form))
-      });
-      showSuccess(form);
-    } catch(err){
-      if(btn){ btn.disabled=false; btn.innerHTML=originalLabel; }
-      alert("Sorry — we couldn't send your request right now. Please email us at "+AVO_EMAIL+" and we'll get right back to you.");
-    }
-  };
-
-  var d=document.getElementById('m_date'); if(d){d.min=new Date().toISOString().split('T')[0];}
-  var d2=document.getElementById('c_date'); if(d2){d2.min=new Date().toISOString().split('T')[0];}
-})();
+  /* Route every "Free Quote" CTA to the quote form on the contact page. */
+  window.avoOpen = function () { window.location.href = 'contact.html#quote'; };
 </script>
 
 <script type="application/ld+json">
