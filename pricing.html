@@ -314,6 +314,19 @@
 .avo .rise.d2{animation-delay:.16s;}
 .avo .rise.d3{animation-delay:.24s;}
 @media(prefers-reduced-motion:reduce){.avo *{animation:none!important;transition:none!important;}}
+/* ---- comparison table: stack into cards on phones (no side-scroll) ---- */
+@media(max-width:640px){
+  .avo .table-wrap{border:0;border-radius:0;overflow:visible;}
+  .avo table.cmp{min-width:0;}
+  .avo table.cmp thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+  .avo table.cmp tr{display:block;background:var(--sd);border:1px solid var(--bd);border-radius:12px;padding:4px 16px 10px;margin-bottom:14px;}
+  .avo table.cmp tr:hover td{background:transparent;}
+  .avo table.cmp td{display:flex;justify-content:space-between;align-items:baseline;gap:18px;text-align:right;border:0;border-top:1px solid var(--bd-soft);padding:11px 0;font-size:.98rem;}
+  .avo table.cmp td::before{content:attr(data-label);color:var(--tl);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;text-align:left;white-space:nowrap;}
+  .avo table.cmp td:first-child{border-top:0;padding:14px 0 8px;font-size:1.12rem;font-weight:800;color:#fff;display:block;text-align:left;}
+  .avo table.cmp td:first-child::before{content:none;}
+  .avo table.cmp .who{display:block;margin-top:4px;text-align:right;}
+}
 </style>
 
 </head>
@@ -368,14 +381,14 @@
       <table class="cmp">
         <thead><tr><th>Service</th><th>Denver Competitor Range</th><th class="avo-col">AVO Price</th><th>You Save</th></tr></thead>
         <tbody>
-          <tr><td>1&ndash;2 item pickup</td><td>$99&ndash;$249<span class="who">1-800-GOT-JUNK, College HUNKS</span></td><td class="avo-col">From $89</td><td class="save">up to $160</td></tr>
-          <tr><td>&frac14; trailer load</td><td>$199&ndash;$300<span class="who">Junk Same Day, Junk King</span></td><td class="avo-col">From $189</td><td class="save">up to $110</td></tr>
-          <tr><td>&frac12; trailer load</td><td>$349&ndash;$600<span class="who">Junk Same Day, College HUNKS</span></td><td class="avo-col">From $319</td><td class="save">up to $280</td></tr>
-          <tr><td>&frac34; trailer load</td><td>$499&ndash;$750<span class="who">Junk Same Day, 1-800-GOT-JUNK</span></td><td class="avo-col">From $449</td><td class="save">up to $300</td></tr>
-          <tr><td>Full trailer load</td><td>$650&ndash;$1,000<span class="who">1-800-GOT-JUNK, College HUNKS</span></td><td class="avo-col">From $599</td><td class="save">up to $400</td></tr>
-          <tr><td>Full garage cleanout</td><td>$400&ndash;$800<span class="who">College HUNKS, Super Junkers</span></td><td class="avo-col">From $379</td><td class="save">up to $420</td></tr>
-          <tr><td>Driveway pressure wash</td><td>$160&ndash;$290<span class="who">Angi / HomeAdvisor Denver avg.</span></td><td class="avo-col">From $139</td><td class="save">up to $150</td></tr>
-          <tr><td>Full vehicle detail</td><td>$200&ndash;$400<span class="who">Panda Hub, CarSpa, CO Auto Detail</span></td><td class="avo-col">From $199</td><td class="save">up to $200</td></tr>
+          <tr><td>1&ndash;2 item pickup</td><td data-label="Competitor">$99&ndash;$249<span class="who">1-800-GOT-JUNK, College HUNKS</span></td><td class="avo-col" data-label="AVO Price">From $89</td><td class="save" data-label="You Save">up to $160</td></tr>
+          <tr><td>&frac14; trailer load</td><td data-label="Competitor">$199&ndash;$300<span class="who">Junk Same Day, Junk King</span></td><td class="avo-col" data-label="AVO Price">From $189</td><td class="save" data-label="You Save">up to $110</td></tr>
+          <tr><td>&frac12; trailer load</td><td data-label="Competitor">$349&ndash;$600<span class="who">Junk Same Day, College HUNKS</span></td><td class="avo-col" data-label="AVO Price">From $319</td><td class="save" data-label="You Save">up to $280</td></tr>
+          <tr><td>&frac34; trailer load</td><td data-label="Competitor">$499&ndash;$750<span class="who">Junk Same Day, 1-800-GOT-JUNK</span></td><td class="avo-col" data-label="AVO Price">From $449</td><td class="save" data-label="You Save">up to $300</td></tr>
+          <tr><td>Full trailer load</td><td data-label="Competitor">$650&ndash;$1,000<span class="who">1-800-GOT-JUNK, College HUNKS</span></td><td class="avo-col" data-label="AVO Price">From $599</td><td class="save" data-label="You Save">up to $400</td></tr>
+          <tr><td>Full garage cleanout</td><td data-label="Competitor">$400&ndash;$800<span class="who">College HUNKS, Super Junkers</span></td><td class="avo-col" data-label="AVO Price">From $379</td><td class="save" data-label="You Save">up to $420</td></tr>
+          <tr><td>Driveway pressure wash</td><td data-label="Competitor">$160&ndash;$290<span class="who">Angi / HomeAdvisor Denver avg.</span></td><td class="avo-col" data-label="AVO Price">From $139</td><td class="save" data-label="You Save">up to $150</td></tr>
+          <tr><td>Full vehicle detail</td><td data-label="Competitor">$200&ndash;$400<span class="who">Panda Hub, CarSpa, CO Auto Detail</span></td><td class="avo-col" data-label="AVO Price">From $199</td><td class="save" data-label="You Save">up to $200</td></tr>
         </tbody>
       </table>
     </div>
