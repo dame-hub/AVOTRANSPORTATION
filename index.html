@@ -524,14 +524,31 @@
 
 <script type="application/ld+json">
 {
- "@context":"https://schema.org","@type":"LocalBusiness","name":"AVO Transportation LLC",
- "description":"Professional junk removal, pressure washing, fleet detailing, hauling and home maintenance in Denver, Aurora, Boulder and the Front Range, Colorado.",
+ "@context":"https://schema.org",
+ "@type":"LocalBusiness",
+ "@id":"https://avotransportation.com/#business",
+ "name":"AVO Transportation LLC",
+ "image":"https://avotransportation.com/assets/avo-logo-full.png",
+ "logo":"https://avotransportation.com/assets/avo-logo-full.png",
+ "url":"https://avotransportation.com",
+ "email":"avotransportationllc@gmail.com",
+ "priceRange":"$$",
+ "description":"Professional junk removal, pressure washing, fleet & auto detailing, hauling, and garage/estate cleanouts in Denver, Aurora, Boulder and the Front Range, Colorado. Upfront pricing with a written price-beat guarantee.",
  "address":{"@type":"PostalAddress","addressLocality":"Aurora","addressRegion":"CO","postalCode":"80010","addressCountry":"US"},
- "email":"avotransportationllc@gmail.com","url":"https://avotransportation.com","priceRange":"$$",
  "areaServed":["Denver","Aurora","Boulder","Lakewood","Arvada","Littleton","Centennial","Parker","Highlands Ranch","Thornton","Westminster","Front Range"],
  "openingHoursSpecification":[
   {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"19:00"},
-  {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"17:00"}]
+  {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"17:00"}],
+ "hasOfferCatalog":{
+  "@type":"OfferCatalog","name":"AVO Transportation Services",
+  "itemListElement":[
+   {"@type":"Offer","itemOffered":{"@type":"Service","name":"Junk Removal & Hauling","description":"Furniture, appliance, yard, and construction debris removal and hauling."}},
+   {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pressure Washing","description":"Driveways, patios, decks, fences and house soft-wash."}},
+   {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fleet & Auto Detailing","description":"Mobile car, truck and fleet detailing and reconditioning."}},
+   {"@type":"Offer","itemOffered":{"@type":"Service","name":"Garage & Estate Cleanout","description":"Full-home, garage and estate cleanouts with cash back for resellable items."}},
+   {"@type":"Offer","itemOffered":{"@type":"Service","name":"Home Maintenance & Property Care","description":"Seasonal cleanup, trash-bin cleaning and outdoor property upkeep."}}
+  ]
+ }
 }
 </script>
 </body>
