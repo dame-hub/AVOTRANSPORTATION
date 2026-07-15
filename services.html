@@ -333,7 +333,7 @@
     <a href="pricing.html">Pricing</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html#book">Book</a>
+    <a href="#" onclick="avoOpen();return false;">Book</a>
     <a href="#" class="nav-cta" onclick="avoOpen();return false;">Free Quote</a>
   </div>
 </nav>
@@ -478,8 +478,22 @@
 </div>
 
 <script>
-  /* Route every "Free Quote" CTA to the quote form on the contact page. */
-  window.avoOpen = function () { window.location.href = 'contact.html#quote'; };
+  /* Every quote/booking CTA goes to AVO's client portal (Jobber), after a
+     brief "you're being redirected" notice. */
+  var AVO_JOBBER_URL = "https://clienthub.getjobber.com/hubs/2d33f18f-a59d-41a4-a93a-6737214702c1/public/requests/4964273/new";
+  window.avoOpen = function () {
+    if (document.getElementById('avoRedirect')) return;
+    var o = document.createElement('div');
+    o.id = 'avoRedirect';
+    o.setAttribute('style', 'position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;');
+    o.innerHTML =
+      '<div style="font-family:Inter,Arial,sans-serif;color:#fff;font-size:1.18rem;font-weight:700;">Taking you to our secure booking portal&hellip;</div>' +
+      '<div style="font-family:Inter,Arial,sans-serif;color:#b6b6b6;font-size:.92rem;margin-top:8px;max-width:340px;">Request your free quote and preferred time &mdash; powered by Jobber.</div>' +
+      '<div style="margin-top:20px;width:36px;height:36px;border:3px solid #ff6b35;border-top-color:transparent;border-radius:50%;animation:avoSpin .8s linear infinite;"></div>' +
+      '<style>@keyframes avoSpin{to{transform:rotate(360deg)}}</style>';
+    document.body.appendChild(o);
+    setTimeout(function () { window.location.href = AVO_JOBBER_URL; }, 1200);
+  };
 </script>
 
 </body>
